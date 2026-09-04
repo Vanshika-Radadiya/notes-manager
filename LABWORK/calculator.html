@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin:0;
+        }
+        .calc-card{
+            text-align: center;
+            padding: 25px;
+            width: 320px;
+            height : 320px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 1);
+            border-radius: 2px;
+        }
+        input{
+            margin: 4px;
+            font-size: larger;        
+        }
+        button{
+            margin : 5px;
+            padding: 5px;
+            font-size: large;
+            width : 30px;
+            background-color: chocolate;
+        }
+        .watermark{
+            font-size:medium;
+            color:rgb(117, 107, 107);
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calc-card">
+        <div class="itemss">
+            <h1>Calculator</h1>
+
+            <input type="text" id="n1">
+            <input type="text" id="n2"><br>
+
+            <button onclick="calculate(this)" value="add">+</button>
+            <button onclick="calculate(this)" value="sub">-</button>
+            <button onclick="calculate(this)" value="mul">*</button>
+            <button onclick="calculate(this)" value="div">/</button>
+
+            <div class="resultD" id="resultD">
+                Result :
+            </div>
+
+            <div class = "watermark">
+                Submitted by : Vanshika Radadiya |<br> PRN : 1272250271 
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function add(a, b){
+            return a + b;
+        }
+
+        function sub(a, b){
+            return a - b;
+        }
+
+        function mul(a, b){
+            return a * b;
+        }
+
+        function div(a, b){
+            if(b == 0){
+                return "Error : Not divisible by 0";
+            }
+            return a / b;
+        }
+
+        function calculate(btn){
+
+            let n1 = parseFloat(document.getElementById("n1").value);
+            let n2 = parseFloat(document.getElementById("n2").value);
+
+            let resultD = document.getElementById("resultD");
+
+            if(isNaN(n1) || isNaN(n2)){
+                resultD.innerHTML = "Result : Enter Valid Number";
+                resultD.style.color = "red";
+                return;
+            }
+
+            let output;
+            resultD.style.color = "green";
+
+            switch(btn.value){
+                case "add":
+                    output = add(n1, n2);
+                    break;
+
+                case "sub":
+                    output = sub(n1, n2);
+                    break;
+
+                case "mul":
+                    output = mul(n1, n2);
+                    break;
+
+                case "div":
+                    output = div(n1, n2);
+
+                    if(typeof output === "string"){
+                        resultD.style.color = "red";
+                    }
+                    break;
+            }
+
+            resultD.innerHTML = "Result : " + output;
+        }
+    </script>
+
+</body>
+</html>

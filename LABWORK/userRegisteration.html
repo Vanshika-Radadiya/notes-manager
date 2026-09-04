@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Registration </title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#eef2f7;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    width:420px;
+    background:#fff;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+h2{
+    text-align:center;
+    margin-bottom:25px;
+    color:#333;
+}
+
+.form-group{
+    margin-bottom:18px;
+}
+
+label{
+    display:block;
+    margin-bottom:6px;
+    font-weight:bold;
+    color:#444;
+}
+
+input{
+    width:100%;
+    padding:11px;
+    border:2px solid #ccc;
+    border-radius:5px;
+    font-size:15px;
+    outline:none;
+    transition:0.3s;
+}
+
+input:focus{
+    border-color:#1e88e5;
+}
+
+.error{
+    border-color:red;
+}
+
+.error-message{
+    display:none;
+    color:red;
+    font-size:13px;
+    margin-top:5px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:#a25fb3;
+    color:white;
+    border:none;
+    border-radius:5px;
+    font-size:17px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#6a3e75; 
+}
+
+.watermark{
+    font-size:15px;
+    color:rgb(101, 93, 93);
+    margin-top: 50px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h2>User Registration </h2>
+
+<form id="registrationForm">
+
+<div class="form-group">
+<label>Full Name</label>
+<input type="text" id="name">
+<div class="error-message" id="nameError">
+Must contain only letters(min 3 characters)
+</div>
+</div>
+
+<div class="form-group">
+<label>Email Address</label>
+<input type="text" id="email">
+<div class="error-message" id="emailError">
+Must be a valid email address
+</div>
+</div>
+
+<div class="form-group">
+<label>Phone Number</label>
+<input type="text" id="phone">
+<div class="error-message" id="phoneError">
+Must be a valid 10-digit number
+</div>
+</div>
+
+<div class="form-group">
+<label>Password</label>
+<input type="password" id="password">
+<div class="error-message" id="passwordError">
+Must contain min 8 chars, with at least 1 uppercase, 1 lowercase and 1 number.
+</div>
+</div>
+
+<button type="submit">Register</button>
+
+            <div class = "watermark">
+                Submitted by : Vanshika Radadiya <br> PRN : 1272250271 
+            </div>
+
+</form>
+
+</div>
+
+<script>
+
+const form=document.getElementById("registrationForm");
+
+const name=document.getElementById("name");
+const email=document.getElementById("email");
+const phone=document.getElementById("phone");
+const password=document.getElementById("password");
+
+function showError(input,id){
+    input.classList.add("error");
+    document.getElementById(id).style.display="block";
+}
+
+function hideError(input,id){
+    input.classList.remove("error");
+    document.getElementById(id).style.display="none";
+}
+
+function validateName(){
+
+    let value=name.value.trim();
+    let pattern=/^[A-Za-z ]{3,}$/;
+
+    if(pattern.test(value)){
+        hideError(name,"nameError");
+        return true;
+    }
+    else{
+        showError(name,"nameError");
+        return false;
+    }
+}
+
+function validateEmail(){
+
+    let value=email.value.trim();
+    let pattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if(pattern.test(value)){
+        hideError(email,"emailError");
+        return true;
+    }
+    else{
+        showError(email,"emailError");
+        return false;
+    }
+}
+
+function validatePhone(){
+
+    let value=phone.value.trim();
+    let pattern=/^\d{10}$/;
+
+    if(pattern.test(value)){
+        hideError(phone,"phoneError");
+        return true;
+    }
+    else{
+        showError(phone,"phoneError");
+        return false;
+    }
+}
+
+function validatePassword(){
+
+    let value=password.value;
+    let pattern=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+    if(pattern.test(value)){
+        hideError(password,"passwordError");
+        return true;
+    }
+    else{
+        showError(password,"passwordError");
+        return false;
+    }
+}
+
+name.addEventListener("blur",validateName);
+email.addEventListener("blur",validateEmail);
+phone.addEventListener("blur",validatePhone);
+password.addEventListener("blur",validatePassword);
+
+name.addEventListener("input",validateName);
+email.addEventListener("input",validateEmail);
+phone.addEventListener("input",validatePhone);
+password.addEventListener("input",validatePassword);
+
+form.addEventListener("submit",function(e){
+
+    e.preventDefault();
+
+    let validName=validateName();
+    let validEmail=validateEmail();
+    let validPhone=validatePhone();
+    let validPassword=validatePassword();
+
+    if(validName && validEmail && validPhone && validPassword){
+
+        alert("Registration Successful!");
+
+        form.reset();
+
+        hideError(name,"nameError");
+        hideError(email,"emailError");
+        hideError(phone,"phoneError");
+        hideError(password,"passwordError");
+    }
+
+});
+
+</script>
+
+</body>
+</html>

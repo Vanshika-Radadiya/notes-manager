@@ -1,0 +1,184 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f6f8;
+  color: #222;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 50px 20px;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  background: white;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+header p {
+  color: #666;
+  font-size: 14px;
+}
+
+.note-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.note-form input {
+  flex: 1;
+  padding: 12px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.note-form input:focus {
+  border-color: #555;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.note-form button {
+  background: #222;
+  color: white;
+}
+
+.note-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 12px;
+  margin-bottom: 15px;
+}
+
+.note-header h2 {
+  font-size: 20px;
+}
+
+.note-header span {
+  color: #666;
+  font-size: 14px;
+}
+
+.note {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fafafa;
+}
+
+.note.important {
+  border-left: 4px solid #222;
+  background: #f0f0f0;
+}
+
+.note-text {
+  flex: 1;
+  font-size: 15px;
+  word-break: break-word;
+}
+
+.note.important .note-text {
+  font-weight: bold;
+}
+
+.note-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.important-btn,
+.edit-btn {
+  background: #e8e8e8;
+  color: #222;
+}
+
+.delete-btn {
+  background: #222;
+  color: white;
+}
+
+.note-actions button:hover {
+  opacity: 0.75;
+}
+
+.empty-message {
+  text-align: center;
+  color: #888;
+  font-size: 14px;
+  padding: 25px;
+}
+
+@media (max-width: 600px) {
+  .app {
+    padding: 20px 10px;
+  }
+
+  .container {
+    padding: 20px;
+  }
+
+  .note-form {
+    flex-direction: column;
+  }
+
+  .note-form button {
+    width: 100%;
+  }
+
+  .note {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .note-actions {
+    justify-content: flex-end;
+  }
+}
+.edit-input {
+  flex: 1;
+  padding: 10px;
+  font-size: 15px;
+  border: 1px solid #999;
+  border-radius: 5px;
+  outline: none;
+}
+
+.edit-input:focus {
+  border-color: #222;
+}
