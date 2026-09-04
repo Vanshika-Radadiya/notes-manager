@@ -23,7 +23,7 @@ A simple and interactive **Notes Manager** built with React.js. It provides an e
 Clone the repository:
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/notes-manager.git
+git clone https://github.com/Vanshika-Radadiya/notes-manager.git
 ```
 
 Navigate to the project directory:
